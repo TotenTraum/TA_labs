@@ -149,32 +149,41 @@ public class IterationMode
 
         if (_inputDates.Count > 0)
         {
-            if(ImGui.BeginTable("Table1",_inputDates[0].Count))
+            if(ImGui.BeginTable("Table1",_inputDates[0].Count + 1))
             {
                 ImGui.TableHeadersRow();
-                foreach (var row in _inputDates)
+                for (var index = 0; index < _inputDates.Count; index++)
                 {
+                    var row = _inputDates[index];
                     ImGui.TableNextRow();
-                    for (int i = 0; i < row.Count; i++)
+                    ImGui.TableSetColumnIndex(0);
+                    ImGui.Text($"{index + 1}");
+                    
+                    for (var i = 0; i < row.Count; i++)
                     {
-                        ImGui.TableSetColumnIndex(i);
+                        ImGui.TableSetColumnIndex(i + 1);
                         ImGui.Text(row[i].ToString());
                     }
                 }
+
                 ImGui.EndTable();
             }
-            if(ImGui.BeginTable("Table2",_maxPathColumn))
+            if(ImGui.BeginTable("Table2",_maxPathColumn + 1))
             {
                 ImGui.TableHeadersRow();
-                foreach (var row in _paths)
+                for (var index = 0; index < _paths.Count; index++)
                 {
+                    var row = _paths[index];
                     ImGui.TableNextRow();
-                    for (int i = 0; i < row.Count; i++)
+                    ImGui.TableSetColumnIndex(0);
+                    ImGui.Text($"{index + 1}");
+                    for (var i = 0; i < row.Count; i++)
                     {
-                        ImGui.TableSetColumnIndex(i);
+                        ImGui.TableSetColumnIndex(i + 1);
                         ImGui.Text(row[i]);
                     }
                 }
+
                 ImGui.EndTable();
             }
         }

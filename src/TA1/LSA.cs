@@ -178,7 +178,7 @@ public struct LSA
             graph.Connect(names.Peek(),Name,isArrow, text);
             names.Push(Name);
             _trueNode.DrawEdges(graph,names,true,"1");
-            _falseNode.DrawEdges(graph,names,false,"0");
+            _falseNode.DrawEdges(graph,names,true,"0");
             names.Pop();
         }
     };
